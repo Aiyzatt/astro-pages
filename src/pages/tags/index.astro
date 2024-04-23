@@ -1,0 +1,40 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import '../../styles/global.css';
+
+const posts = await Astro.glob("../posts/*.md")
+const uniqueTags: string[] = [...new Set(posts.flatMap(post => post.frontmatter.tags))]
+
+const pageTitle = "tag list"
+---
+<Layout title={pageTitle}>
+  <main>
+    {uniqueTags.map(tag => (
+      <p>
+        <a href={`/tags/${tag}`} class="tag">
+          {tag}
+          </a>
+      </p>
+    ))}
+  </main>
+</Layout>
+
+<style>
+  a {
+    color: #00539F;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: .5em;
+    padding: .5em 1em;
+    font-size: 1.15em;
+    background-color: #F8FCFD;
+  }
+</style>
