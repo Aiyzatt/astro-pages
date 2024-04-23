@@ -8,7 +8,7 @@ const { frontmatter } = Astro.props;
   <p>著者: {frontmatter.author}</p>
   <div class="tags">
     {frontmatter.tags.map((tag: string) => (
-      <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
+      <p class="tag"><a href={`/astro-pages/tags/${tag}`}>{tag}</a></p>
     ))}
   </div>
   <slot />
